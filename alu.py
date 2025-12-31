@@ -18,13 +18,13 @@ class ALU:
         self.source_two = source_two
 
 
-    def add_op(self): 
+    def add_op(self, opcode, source_one, source_two): 
         return self.source_two + self.source_one
 
-    def sub_op(self):
+    def sub_op(self, opcode, source_one, source_two):
         return self.source_two - self.source_one
     
-    def mult_op(self):
+    def mult_op(self, opcode, source_one, source_two):
         return self.source_two * self.source_one
 
     def execute_op(self):
