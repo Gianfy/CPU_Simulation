@@ -5,10 +5,10 @@
 from memory import MEMORY
 
 class RAM(MEMORY):
-    
+
     def __init__(self, arch):
         super().__init__(arch)
-        self.name = "Ram"
+        self.name = "Main Memory"
 
     def update_status(self, action):
         self.action_on_memory(self.name)
