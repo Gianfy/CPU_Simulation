@@ -1,4 +1,5 @@
-#This is a simulation of a simple cache memory consisting of 8 blocks for initial simplicity
+# This is a simulation of a simple cache memory consisting of 8 blocks for initial simplicity
+
 from memory import MEMORY
 
 class CACHE(MEMORY):
@@ -14,3 +15,12 @@ class CACHE(MEMORY):
 
 
     
+
+def main():
+    test = CACHE(32)
+
+    print(test.mem)
+
+
+if __name__ == "__main__":
+    main()

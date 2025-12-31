@@ -8,15 +8,16 @@
 # TypeJ  000000 00000 00000 0000000000000000
 #          OP    rs    rt       offset(it's in byte) 
 
-
-# Remember all addres in binary code are the registers address in the CPU
+# I have foreseen in the implementation that the data are all binary strings, they are transformed into integers only 
+# in log events
+# Remember all address in binary code are the registers address in the CPU
 from ram import RAM
 
 from registers import REGISTERS
 from alu import ALU
 
 class CU:
-    def __init__(self, registers_object, alu_object, binary_code):
+    def __init__(self, registers_object, alu_object, cache_object, binary_code):
         self.binary_code = binary_code
         self.opcode = ''
         self.source_one = ''
@@ -25,6 +26,7 @@ class CU:
         self.alu = alu_object
         self.registers = registers_object
         self.ram = RAM(32)
+
 
     def decode_binary_code(self):
         self.opcode = self.binary_code[:6]
