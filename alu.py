@@ -11,27 +11,80 @@
 # SW             Rt, offset(Rs)     MEM[Rs + offset] <-- Rt   
 
 
+# remember source_one and source_two must be values in registers of CPU
+
 class ALU:
-    def __init__(self, opcode, source_one, source_two):
-        self.opcode = opcode
-        self.source_one = source_one
-        self.source_two = source_two
-
-
-    def add_op(self, opcode, source_one, source_two): 
-        return self.source_two + self.source_one
-
-    def sub_op(self, opcode, source_one, source_two):
-        return self.source_two - self.source_one
     
-    def mult_op(self, opcode, source_one, source_two):
-        return self.source_two * self.source_one
+    
+    def __init__(self):
+        self.opcode = ''
+        self.source_value_one = ''
+        self.source_value_two = ''
+        self.status = "Activation ALU for operation: "
+
+
+    def get_opcode_and_values_from_cu(self, opcode, source_value_one, source_value_two):
+        # Collects the values ​​contained in the registers passed to it by the CU in string format and the opcode
+        self.opcode = opcode
+        self.source_one = source_value_one
+        self.source_two = source_value_two
+
+        result_value = self.execute_op()
+        return result_value
+
+    def add_op(self):
+        # Calculates the operation and returns a value in binary not as a string
+        # receives the values contained in the registers as arguments
+        result_value = bin(int(self.source_two, 2) + int(self.source_one, 2))
+        action = f'add value {int(self.source_two, 2)} with value {int(self.source_one, 2)}'
+        print(self.status + action)
+        return result_value
+
+    def sub_op(self):
+        # Calculates the operation and returns a value in binary not as a string
+        # receives the values contained in the registers as arguments
+        result_value = bin(int(self.source_two, 2) - int(self.source_one, 2))
+        action = f'sub value {int(self.source_two, 2)} with value {int(self.source_one, 2)}'
+        print(self.status + action)
+        return result_value
+
+    def mult_op(self):
+        # Calculate the operation and return a value in binary not as a string
+        # receives the values contained in the registers as arguments
+        result_value = bin(int(self.source_two, 2) * int(self.source_one, 2))
+        action = f'mult value {int(self.source_two, 2)} with value {int(self.source_one, 2)}'
+        print(self.status + action)
+        return result_value
+
+    def load_op(self):
+        # Receives the offset + contents of register 1 as arguments
+        memory_address = bin(int(self.source_two, 2) + int(self.source_one, 2))
+        action = f'add value {int(self.source_two, 2)} with value {int(self.source_one, 2)}. Result is the memory addres {int(memory_address, 2)}'
+        print(self.status + action)
+        return memory_address
+
+    def store_op(self):
+        # Receives the offset + contents of register 1 as arguments
+        memory_address = bin(int(self.source_two, 2) + int(self.source_one, 2))
+        action = f'add value {int(self.source_two, 2)} with value {int(self.source_one, 2)}. Result is the memory addres {int(memory_address, 2)}'
+        print(self.status + action)
+        return memory_address
+
 
     def execute_op(self):
-        if opcode == '000001':
-            self.add_op()
-        elif opcode == '000010':
-            self.sub_op()
-        elif opcode == '000011':
-            self.mult_op()
-        
+        result = ''
+        # Evaluate the opcode and perform operations
+        if self.opcode == '000001':
+            result = self.add_op()
+        elif self.opcode == '000010':
+            result = self.sub_op()
+        elif self.opcode == '000011':
+            result = self.mult_op()
+        elif self.opcode == '000100':
+            result = self.load_op()
+        elif self.opcode == '000110':
+           result =  self.store_op()
+        return result
+
+
+        print(status + action)
