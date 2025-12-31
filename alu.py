@@ -10,13 +10,6 @@
 # LW             Rt, offset(Rs)     Rt <-- MEM[Rs + offset]
 # SW             Rt, offset(Rs)     MEM[Rs + offset] <-- Rt   
 
-# Binary instruction format
-# TypeR  000000 00000 00000 00000 00000 000000   op = 000000 refers to func
-#          OP     rs    rt   rd   shamt  func
-# TypeI  000000 00000 00000 0000000000000000
-#          OP    rs    rt       immd
-# TypeJ  000000 00000000000000000000000000
-#          OP          address 
 
 class ALU:
     def __init__(self, opcode, source_one, source_two):
