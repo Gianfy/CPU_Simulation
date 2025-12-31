@@ -3,5 +3,11 @@
 class MEMORY:
     def __init__(self, arch):
         self.arch = arch
-        self.mem = [0 for _ in range(self.arch)]
-        self.update = 'Access to memory: '
+        self.mem = [str(bin(_)) for _ in range(self.arch)]
+        
+
+    def action_on_memory(self, type_memory):
+        print(f'Access to {type_memory}: ', end=' ')
+
+
+

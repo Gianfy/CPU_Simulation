@@ -1,0 +1,1 @@
+# Questa è una simulazione di una memoria cache semplice formata da 
