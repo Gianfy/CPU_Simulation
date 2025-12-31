@@ -53,14 +53,14 @@ class CU:
         index = int(destination, 2)
         self.registers.mem[index] = bin(int(value_to_store, 2))
         
-        action = f'store value {int(value_to_store, 2)} in register {int(destination, 2)}'
+        action = f'store value {int(value_to_store, 2)} in register at address {int(destination, 2)}'
         self.registers.update_status(action)
 
     
     # get values to alu operations
     def get_value_from_register(self, source):
         value = self.registers.mem[int(source, 2)]
-        action = f'get value {int(value, 2)} from register {int(source, 2)}'
+        action = f'get value {int(value, 2)} from register at address {int(source, 2)}'
         self.registers.update_status(action)
         return value
 
@@ -84,20 +84,23 @@ class CU:
             self.store_value_in_register(self.destination, value_from_memory)
         elif self.opcode == '000110':
             # store from register to memory operation
-            self.get_value_from_register(self.destination)
-            self.store_value_to_memory(result)
+            value_to_store = self.get_value_from_register(self.destination)
+            self.store_value_to_memory(result, value_to_store)
         else:
             self.store_value_in_register(self.destination, result)
     
 
-    def store_value_to_memory(self, address):
-        ...
-
+    def store_value_to_memory(self, address, value_to_store):
+        index = int(address, 2)
+        self.ram.mem[index] = value_to_store
+        action = f'store value {int(value_to_store, 2)} to memory at address {int(address, 2)}'
+        self.ram.update_status(action)
+    
         
-    def get_value_from_memory(self, addres):
-        index = int(addres, 2)
+    def get_value_from_memory(self, address):
+        index = int(address, 2)
         value_get = self.ram.mem[index]
-        action = f'get value {int(value_get, 2)} from memory {int(addres, 2)}'
+        action = f'get value {int(value_get, 2)} from memory at address {int(address, 2)}'
         self.ram.update_status(action)
         return value_get
 

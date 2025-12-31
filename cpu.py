@@ -19,7 +19,7 @@ class CPU:
 
 
 def main():
-    binary_code = '000100000000001100000000000000010'
+    binary_code = '000110000000001100000000000000010'
     test_cpu = CPU(binary_code, 32)
     result = test_cpu.cu.decode_binary_code()
     print(result)
