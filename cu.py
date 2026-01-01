@@ -187,10 +187,15 @@ class CU:
         self.cache.update_status(action)
 
                 
-
-    def get_value_from_cache(self, index):
+    # Prendiamo valore dalla cache dopo controllo di esistenza del valore desiderato all'indirizzo richiesto
+    # cache hit
+    def get_value_directly_from_cache(self, result_check):
         ...
     
+    # Prendiamo valore dalla cache dopo averlo preso dalla ram e salvato in cache
+    # cache miss
+    def get_value_from_cache_after_ram(self, result_check):
+        ...
     
     def check_cache(self, address):
         index = 0
