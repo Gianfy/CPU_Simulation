@@ -25,7 +25,9 @@ class CU:
         self.destination = ''
         self.alu = alu_object
         self.registers = registers_object
+        self.cache = cache_object
         self.ram = RAM(32)
+        
 
 
     def decode_binary_code(self):
@@ -92,12 +94,13 @@ class CU:
             self.store_value_in_register(self.destination, result)
     
 
+    # Operations on main memory
     def store_value_to_memory(self, address, value_to_store):
         index = int(address, 2)
         self.ram.mem[index] = value_to_store
         action = f'store value {int(value_to_store, 2)} to memory at address {int(address, 2)}'
         self.ram.update_status(action)
-    
+
         
     def get_value_from_memory(self, address):
         index = int(address, 2)
@@ -105,6 +108,60 @@ class CU:
         action = f'get value {int(value_get, 2)} from memory at address {int(address, 2)}'
         self.ram.update_status(action)
         return value_get
+
+    # Operations on cache
+    # This method overwrites an existing value. No need access to ram just modify Dirty bit
+    # L'argomento index è un set che contiene il risultato del controllo in cache e l'indirizzo cercato
+    def store_value_to_cache(self, index, value_to_store):
+        
+        if index[0] is not None:
+            # cache hit!
+            self.cache.mem[index]['Data'] = value_to_store
+            action = f'store value {int(value_to_store, 2)} to cache at address {index}'
+            self.cache.update_status(action)
+            address = self.cache.mem[index]['Tag']
+            if self.cache.mem[index]['Dirty_Bit'] == '0'
+                # Change the Dirty Bit because the value has changed compared to RAM
+                self.cache.mem[index]['Dirty_Bit'] = '1'
+        else:
+
+            # cache miss!
+            # scegliere un entry da sovrascrivere perché si è verificato un cache MISS.
+            # Adoperiamo la policy Write-Back, per evitare di accedere troppo spesso alla ram
+            # Adoperiamo la associatività directed-mapped
+            address = index[1]
+            blocks_numbers = self.cache.get_blocks_numbers()
+            index_in_ram = int(address, 2)
+            index_override_in_cache = self.ram.mem[index_in_ram] % blocks_numbers
+            if self.cache.mem[index_override_in_cache]['Dirty_bit'] == '1':
+
+                # L'entry in cache ha subito modifiche quindi va prima modificato il valore in ram e poi sovrascritto
+                address_to_modify_in_ram = int(self.cache.mem[index_override_in_cache]['Tag'], 2)
+                self.ram.mem[address_to_modify_in_ram] = self.cache.mem[index_override_in_cache]['Data']
+                self.cache.mem[index_override_in_cache]['Dirty_bit'] = '0'
+
+                # Sovrascrivere in cache
+                self.cache.mem[index_override_in_cache]['Tag'] = address
+                self.cache.mem[index_override_in_cache]['Data'] = value_to_store
+
+
+                
+
+    def get_value_from_cache(self, index):
+        ...
+    
+    
+    def check_cache(self, address):
+        index = 0
+        # If a cache hit occurs then return the index where the entry is located and the address in ram otherwise return None and the address in ram
+        for entry in self.cache.mem:
+            if entry['Tag'] == address:
+                # CACHE HIT!!
+                return (index, address)
+            index += 1
+        return (None, address)
+
+
 
 def main():
     # Testing object
