@@ -1,0 +1,7 @@
+Istruzioni binarie:
+
+ADD 000001
+SUB 000010
+MUL 000011
+LW  000100
+SW  000110

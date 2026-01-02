@@ -23,7 +23,7 @@ class CACHE(MEMORY):
 def main():
     test = CACHE(32)
 
-    print(test.mem)
+    print(test.show_status_mem())
 
 
 if __name__ == "__main__":

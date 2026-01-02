@@ -41,7 +41,9 @@ class CPU:
 
 def main():
     binary_code = '000110000000001100000000000000010'
+    
     test_cpu = CPU(binary_code, 32)
+    test_cpu.cu.ram.mem
     test_cpu.cpu_instruction_cycle()
 
 if __name__ == "__main__":
