@@ -1,6 +1,7 @@
 # This class simulates the general behavior of any memory
 # The arch argument indicates the memory architecture so I will refer to it as an int
 from random import randint
+
 class MEMORY:
     def __init__(self, arch):
         self.arch = arch
