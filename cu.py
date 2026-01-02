@@ -18,7 +18,7 @@ from registers import REGISTERS
 from alu import ALU
 
 class CU:
-    def __init__(self, registers_object, alu_object, cache_object, binary_code):
+    def __init__(self, registers_object, alu_object, cache_object, ram_object, binary_code):
         self.binary_code = binary_code
         self.opcode = ''
         self.source_one = ''
@@ -27,8 +27,13 @@ class CU:
         self.alu = alu_object
         self.registers = registers_object
         self.cache = cache_object
-        self.ram = RAM(32)
-        
+        self.ram = ram_object
+    
+    def show_status_ram(self):
+        self.ram.show_status_mem()
+
+    def show_status_cache(self):
+        self.cache.show_status_mem()
 
 
     def decode_binary_code(self):

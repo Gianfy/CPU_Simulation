@@ -7,7 +7,8 @@ class REGISTERS(MEMORY):
         super().__init__(arch)
         self.name = "Registers"
 
+    """
     def update_status(self, action):
         self.action_on_memory(self.name)
         print(action)
-
+    """

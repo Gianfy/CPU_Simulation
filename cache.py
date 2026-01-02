@@ -11,10 +11,11 @@ class CACHE(MEMORY):
         self.name = "Cache"
         self.blocks_numbers = arch
 
+    """
     def update_status(self, action):
         self.action_on_memory(self.name)
         print(action)
-
+    """
 
     def get_blocks_numbers(self):
         return self.blocks_numbers
