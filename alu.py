@@ -1,4 +1,4 @@
-# This is the simulation of an ALU inside a CPU with MIPS architecture
+# This is the simulation of an ALU (Arithmetic Logic Unit) inside a CPU with MIPS architecture
 # Being a study project for the moment it only contains some basic instructions
 # for arithmetic operations, data loading and storage.
 # Instructions:
@@ -59,14 +59,14 @@ class ALU:
     def load_op(self):
         # Receives the offset + contents of register 1 as arguments
         memory_address = bin(int(self.source_two, 2) + int(self.source_one, 2))
-        action = f'add value {int(self.source_two, 2)} with value {int(self.source_one, 2)}. Result is the memory addres {int(memory_address, 2)}'
+        action = f'add value {int(self.source_two, 2)} with value {int(self.source_one, 2)}. Result is the memory address {int(memory_address, 2)}'
         print(self.status + action)
         return memory_address
 
     def store_op(self):
         # Receives the offset + contents of register 1 as arguments
         memory_address = bin(int(self.source_two, 2) + int(self.source_one, 2))
-        action = f'add value {int(self.source_two, 2)} with value {int(self.source_one, 2)}. Result is the memory addres {int(memory_address, 2)}'
+        action = f'add value {int(self.source_two, 2)} with value {int(self.source_one, 2)}. Result is the memory address {int(memory_address, 2)}'
         print(self.status + action)
         return memory_address
 

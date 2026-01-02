@@ -1,6 +1,7 @@
 # This is the simulation of a CPU in overall terms.
 # It will consist of an ALU and a CU.
 # The instruction cycle of the cpu is simplified to three phases, I foreseen memory access in the execute phase
+# The operations it can do for now are only addition, subtraction, multiplication, loading from memory and writing to memory.
 
 from cu import CU
 from alu import ALU
@@ -26,12 +27,17 @@ class CPU:
                 self.cu.fetch_operation(binary_code)
             elif self.cycle_stage == 1:
                 # Decode
-                self.cu.decode_binary_code()
+                decode_values = self.cu.decode_binary_code()
+                print()
+                print(f"Decoddifica dell'istruzione {binary_code} : ")
+                print(f'Opcode: {decode_values[0]}, soure_one: {decode_values[1]}, source_two: {decode_values[2]}, destination: {decode_values[3]}')
+                print()
             elif self.cycle_stage == 2:
                 # Execute
                 self.cu.execute_binary_code()
             
             self.cycle_stage += 1
+        self.cycle_stage = 0
 
 
 
@@ -41,17 +47,18 @@ class CPU:
 
 
 def main():
-    binary_code = '000110000000001100000000000000010'
+    binary_code = ['00010000000000010000000000001010', '00010000000000100000000000010001', '00000000001000100001100000000001', '00011000000000110000000000000101']
     
     test_cpu = CPU(32)
-    
-    test_cpu.ram.show_status_mem()    
-    test_cpu.cache.show_status_mem()
-    
-    test_cpu.cpu_instruction_cycle(binary_code)
 
-    test_cpu.ram.show_status_mem()    
-    test_cpu.cache.show_status_mem()
+    #test_cpu.ram.show_status_mem()    
+    #test_cpu.cache.show_status_mem()
+    
+    for code in binary_code:
+        test_cpu.cpu_instruction_cycle(code)
+
+    #test_cpu.ram.show_status_mem()    
+    #test_cpu.cache.show_status_mem()
     
 
 if __name__ == "__main__":

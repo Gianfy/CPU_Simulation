@@ -1,9 +1,11 @@
-# Questa classe simula il comportamento generale di qualunque memoria
-# L'argomento arch indica l'architettura della memoria quindi lo idicherò come un int
+# This class simulates the general behavior of any memory
+# The arch argument indicates the memory architecture so I will refer to it as an int
+from random import randint
 class MEMORY:
     def __init__(self, arch):
         self.arch = arch
-        self.mem = [bin(0) for _ in range(self.arch)]
+        # tutte le memorie di base sono riempite in modo casuale
+        self.mem = [bin(randint(0, 31)) for _ in range(self.arch)]
         self.name = ''
 
     def update_status(self, action):        
