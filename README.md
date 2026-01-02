@@ -24,7 +24,7 @@ Where 'input.txt' is the file with instructions in binary format.
 ## Input file format
 -Each line contains an instruction in binary code (32-bit string) according to a MIPS32 format:
 
-    ```
+    ```markdown
     -typeR -- op(6 bit) rs(5 bit) rt(5 bit) rd(5 bit) shamt(5 bit) FUNC(6 bit)
 
     -typeI -- op(6 bit) rs(5 bit) rt(5 bit) imd(16 bit) [rt destination]    
@@ -39,7 +39,7 @@ Where 'input.txt' is the file with instructions in binary format.
 
 Example output:
     
-    ```
+    ```markdown
     Decoding the instruction 00010000000000010000000000001010: 
     Opcode: 000100, soure_one: 00000, source_two: 0000000000001010, destination: 00001
 
