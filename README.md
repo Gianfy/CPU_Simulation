@@ -24,13 +24,13 @@ Where 'input.txt' is the file with instructions in binary format.
 ## Input file format
 -Each line contains an instruction in binary code (32-bit string) according to a MIPS32 format:
 
-    ```markdown
+    
     -typeR -- op(6 bit) rs(5 bit) rt(5 bit) rd(5 bit) shamt(5 bit) FUNC(6 bit)
 
     -typeI -- op(6 bit) rs(5 bit) rt(5 bit) imd(16 bit) [rt destination]    
 
     -typeJ -- op(6 bit) rs(5 bit) rt(5 bit) offset(16 bit) [rt destination or source in SW]
-    ```
+    
     
 -The input file shows an example of a test format. It wants to simulate a possible file in assembly format which was hypothetically transformed into binary line by line and which for the moment is directly executed instruction by instruction. (the possibility of loading it into RAM from which it would then be read similarly to reality will be implemented).
 
@@ -39,7 +39,7 @@ Where 'input.txt' is the file with instructions in binary format.
 
 Example output:
     
-    ```markdown
+    
     Decoding the instruction 00010000000000010000000000001010: 
     Opcode: 000100, soure_one: 00000, source_two: 0000000000001010, destination: 00001
 
@@ -48,7 +48,7 @@ Example output:
     Access to Main Memory: get value 25 from memory at address 10
     Cache MISS!  Access to Cache: store value 25 to cache at address 10
     Access to Registers: store value 25 in register at address 1
-    ```
+    
 
 ## Implementation choices
 -It was chosen to try to get a little closer to the reality of using the string type to represent data in binary format ('0b00' or '00').
