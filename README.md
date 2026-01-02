@@ -14,9 +14,11 @@ Il progetto volutamente semplificato serve a mostrare il ciclo di istruzione del
 ## Uso rapido
 1. Posizionati nella root del repository (dove c'è 'simulation.py')
 2. Esegui:
-    ...
-    python3 simulation.py input.txt
-    ...
+
+    ```markdown
+        Esempio: lanciare la simulazione
+    ```bash
+        python3 simulation.py input.txt
 
     Dove 'input.txt' è il file con le istruzioni in formato binario.
 
