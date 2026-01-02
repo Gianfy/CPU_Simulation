@@ -24,7 +24,7 @@ class CU:
         self.registers = registers_object
         self.cache = cache_object
         self.ram = ram_object
-        # Ho inserito un bit che differenzia il tipo di operazione R dagli altri
+        # I inserted a bit that differentiates the R operation type from the others
         self.immd_bit = 0
     
     def show_status_ram(self):
@@ -217,7 +217,7 @@ class CU:
         blocks_numbers = self.cache.get_blocks_numbers()
         index_to_write_in_cache = int(address, 2) % blocks_numbers
 
-        # Controllo Dirty bit se 1 sovrascrivere entry ma prima modificare valore in ram     
+        # Dirty bit check if 1 overwrite entry but first modify value in ram      
         dirty_bit = self.cache.mem[index_to_write_in_cache]['Dirty_Bit']
         if dirty_bit == '1':
             # need to update value in ram
