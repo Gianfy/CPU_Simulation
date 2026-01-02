@@ -1,4 +1,4 @@
-#This represents a very simple simulation of a computer for study purposes.
+# This represents a very simple simulation of a computer for study purposes.
 # For the moment the components maintain the simplicity of operations such as addition, subtraction and multiplication.
 # It will be necessary to insert the Jump operation in order to also test the use of the PC (program counter).
 # This class represents the Computer as a whole, the components are in separate classes and are:
