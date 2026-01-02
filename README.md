@@ -16,10 +16,8 @@ Il progetto volutamente semplificato serve a mostrare il ciclo di istruzione del
 2. Esegui:
 
     ```markdown
-        Esempio: lanciare la simulazione
-    ```bash
         python3 simulation.py input.txt
-
+    ```
     Dove 'input.txt' è il file con le istruzioni in formato binario.
 
 ## Formato del file di input
