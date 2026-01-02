@@ -1,7 +1,6 @@
 # This class represents a simulation of RAM (Random Access Memory) in a PC
 # for simplicity I will set the size to 32 memory addresses
 
-
 from memory import MEMORY
 
 class RAM(MEMORY):
