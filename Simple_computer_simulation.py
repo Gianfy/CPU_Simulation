@@ -7,7 +7,7 @@ from cpu import CPU
 
 
 class COMPUTER_SIMULATION:
-    def __inti__(self, name, arch):
+    def __init__(self, name, arch):
         self.name = name
         self.cpu = CPU(arch)
         self.instructions = []
@@ -15,14 +15,20 @@ class COMPUTER_SIMULATION:
     
     def input_from_user(self, file):
         with open(file) as file:
-            self.instructions = file.readlines()
+            for line in file:
+                self.instructions.append(line.strip())
 
     def power_on(self):
-        self.cpu.cpu_instruction_cycle(self.instructions)        
+        for code in self.instructions:
+            self.cpu.cpu_instruction_cycle(code)        
 
 
 
 def main():
     computer = COMPUTER_SIMULATION('Gianni', 32)
     istructions = computer.input_from_user('test.txt')
+    print(computer.instructions)
     computer.power_on()
+
+if __name__ == "__main__":
+    main()
