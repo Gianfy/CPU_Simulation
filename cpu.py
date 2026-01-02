@@ -29,7 +29,7 @@ class CPU:
                 # Decode
                 decode_values = self.cu.decode_binary_code()
                 print()
-                print(f"Decoddifica dell'istruzione {binary_code} : ")
+                print(f"Decoding the instruction {binary_code} : ")
                 print(f'Opcode: {decode_values[0]}, soure_one: {decode_values[1]}, source_two: {decode_values[2]}, destination: {decode_values[3]}')
                 print()
             elif self.cycle_stage == 2:
@@ -45,7 +45,7 @@ class CPU:
 
 
 
-
+# Main for test
 def main():
     binary_code = ['00010000000000010000000000001010',
                     '00010000000000100000000000010001',

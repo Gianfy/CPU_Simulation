@@ -85,6 +85,7 @@ class CU:
             self.immd_bit = 0
         else:
             value_two = self.get_value_from_register(self.source_two)
+            self.immd_bit = 0
 
         # Activate the alu to perform the calculations
         result = self.alu.get_opcode_and_values_from_cu(self.opcode, value_one, value_two)
@@ -98,7 +99,7 @@ class CU:
         if self.opcode == '000100':
 
             # Load from memory to store in registry operation
-           # First check your cache.
+            # First check your cache.
             # Returns a set with index and searched address (index, address)
             cache_result = self.check_cache(result)
 
@@ -149,14 +150,14 @@ class CU:
 # Operations on cache
 
     # This method acts on the cache in case there is a cache miss.
-    # The index argument is a set that contains the result of the cached check and the searched address
-    def store_value_to_cache_after_ram(self, index, value_to_store):
+    # The cache_result argument is a set that contains the result of the cached check and the searched address
+    def store_value_to_cache_after_ram(self, cache_result, value_to_store):
 
         # cache miss!
         # choose an entry to overwrite because a cache MISS occurred.
         # We use the Write-Back policy, to avoid accessing the RAM too often
         # We use directed-mapped associativity
-        address = index[1]
+        address = cache_result[1]
         blocks_numbers = self.cache.get_blocks_numbers()
         index_in_ram = int(address, 2)
         index_overwrite_in_cache = index_in_ram % blocks_numbers
