@@ -8,6 +8,7 @@ class REGISTERS(MEMORY):
         self.mem = [bin(_) for _ in range(arch)]
         self.name = "Registers"
 
+
     """
     def update_status(self, action):
         self.action_on_memory(self.name)
