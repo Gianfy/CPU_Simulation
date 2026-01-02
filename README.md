@@ -24,9 +24,12 @@ Where 'input.txt' is the file with instructions in binary format.
 ## Input file format
 -Each line contains an instruction in binary code (32-bit string) according to a MIPS32 format:
 
--type R op 00000 rs 00000 rt 00000 rd 00000 shamt 00000 FUNC 000000
--type I op 000000 rs 00000 rt 00000 imd 0000000000000000 rt destination    
--type J op 000000 rs 00000 rt 00000 offset 0000000000000000 rt destination (or source in SW)
+-typeR -- op(6 bit) rs(5 bit) rt(5 bit) rd(5 bit) shamt(5 bit) FUNC(6 bit)
+
+-typeI -- op(6 bit) rs(5 bit) rt(5 bit) imd(16 bit) [rt destination]    
+
+-typeJ -- op(6 bit) rs(5 bit) rt(5 bit) offset(16 bit) [rt destination or source in SW]
+
 -The input file shows an example of a test format. It wants to simulate a possible file in assembly format which was hypothetically transformed into binary line by line and which for the moment is directly executed instruction by instruction. (the possibility of loading it into RAM from which it would then be read similarly to reality will be implemented).
 
 ## Outputs
@@ -51,6 +54,7 @@ Example output:
 -The manipulation in the operations occurs with the transformation into integers to indicate the numerical values ​​and therefore the memory indices in the data structures.
 
 -For load and store operations the data must always be represented as binary in the form of strings.
+
 -The data structure used for memories is the list while for the cache it is a list of dictionaries ([{'Tag': , 'Data': , 'Dirty_Bit'}])
 
 
