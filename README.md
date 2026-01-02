@@ -18,23 +18,22 @@ The deliberately simplified project serves to show the processor instruction cyc
     ```markdown
         python3 simulation.py input.txt
     ```
+
 Where 'input.txt' is the file with instructions in binary format.
 
 ## Input file format
 -Each line contains an instruction in binary code (32-bit string) according to a MIPS32 format:
 
     -type R op 00000 rs 00000 rt 00000 rd 00000 shamt 00000 FUNC 000000
-
-    -type I op 000000 rs 00000 rt 00000 imd 0000000000000000 rt destination
-    
+    -type I op 000000 rs 00000 rt 00000 imd 0000000000000000 rt destination    
     -type J op 000000 rs 00000 rt 00000 offset 0000000000000000 rt destination (or source in SW)
-
     -The input file shows an example of a test format. It wants to simulate a possible file in assembly format which was hypothetically transformed into binary line by line and which for the moment is directly executed instruction by instruction. (the possibility of loading it into RAM from which it would then be read similarly to reality will be implemented).
 
 ## Outputs
 -The program prints in the console the logs of the operations it is carrying out on the memories, registers, cache phases and access to the lau. (all data is in full format to be a little more readable)
 
     Example output:
+    
     ```
     Decoding the instruction 00010000000000010000000000001010: 
     Opcode: 000100, soure_one: 00000, source_two: 0000000000001010, destination: 00001
