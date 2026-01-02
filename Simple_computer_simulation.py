@@ -22,13 +22,3 @@ class COMPUTER_SIMULATION:
         for code in self.instructions:
             self.cpu.cpu_instruction_cycle(code)        
 
-
-
-def main():
-    computer = COMPUTER_SIMULATION('Gianni', 32)
-    istructions = computer.input_from_user('test.txt')
-    print(computer.instructions)
-    computer.power_on()
-
-if __name__ == "__main__":
-    main()
