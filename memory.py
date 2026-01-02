@@ -3,9 +3,9 @@
 class MEMORY:
     def __init__(self, arch):
         self.arch = arch
-        self.mem = [bin(_) for _ in range(self.arch)]
+        self.mem = [bin(0) for _ in range(self.arch)]
         self.name = ''
-        
+
     def update_status(self, action):        
         print(f'Access to {self.name}: {action}')
 
