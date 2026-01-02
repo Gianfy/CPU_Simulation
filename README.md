@@ -23,13 +23,13 @@ Where 'input.txt' is the file with instructions in binary format.
 
 ## Input file format
 -Each line contains an instruction in binary code (32-bit string) according to a MIPS32 format:
+    ```
+    -typeR -- op(6 bit) rs(5 bit) rt(5 bit) rd(5 bit) shamt(5 bit) FUNC(6 bit)
 
--typeR -- op(6 bit) rs(5 bit) rt(5 bit) rd(5 bit) shamt(5 bit) FUNC(6 bit)
+    -typeI -- op(6 bit) rs(5 bit) rt(5 bit) imd(16 bit) [rt destination]    
 
--typeI -- op(6 bit) rs(5 bit) rt(5 bit) imd(16 bit) [rt destination]    
-
--typeJ -- op(6 bit) rs(5 bit) rt(5 bit) offset(16 bit) [rt destination or source in SW]
-
+    -typeJ -- op(6 bit) rs(5 bit) rt(5 bit) offset(16 bit) [rt destination or source in SW]
+    ```
 -The input file shows an example of a test format. It wants to simulate a possible file in assembly format which was hypothetically transformed into binary line by line and which for the moment is directly executed instruction by instruction. (the possibility of loading it into RAM from which it would then be read similarly to reality will be implemented).
 
 ## Outputs
