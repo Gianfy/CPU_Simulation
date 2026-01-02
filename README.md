@@ -1,40 +1,42 @@
 # CPU_Simulation
 
-Simulazione molto semplice del comportamento di una CPU (del tipo MIPS32).
-Il progetto volutamente semplificato serve a mostrare il ciclo di istruzione del processore (fetch, decode, execute), l'interazione tra i vari componenti interni e le memorie (cu, alu, registri, cache, ram) e alcuni esempi di istruzioni in codice binario.
+Very simple simulation of the behavior of a CPU (of the MIPS32 type).
+The deliberately simplified project serves to show the processor instruction cycle (fetch, decode, execute), the interaction between the various internal components and memories (cu, alu, registers, cache, ram) and some examples of instructions in binary code.
 
-## Stato attuale
-- Implementazione: add, sub, mul, load (da Ram a registro), store (da registro a Ram) tramite la cache.
-- Mancano jump e altre istruzioni di controllo di flusso; miglior gestione dei formati e dei tipi.
-- Per quanto riguarda la Cache è ampliata la Directed-Mapped per l'associatività e Write-back per la write policy.È possibile implementare le altre policy in futuro.
+## Current status
+-Implementation: add, sub, mul, load (from Ram to register), store (from register to Ram) via cache.
+-Jumps and other flow control instructions are missing; better management of formats and types.
+-As regards the Cache, Directed-Mapped for associativity and Write-back for the write policy have been expanded. It is possible to implement the other policies in the future.
 
-## Requisiti
-- Python 3.8+ (nessuna dipendenza esterna).
+## Requirements
+-Python 3.8+ (no external dependencies).
 
-## Uso rapido
-1. Posizionati nella root del repository (dove c'è 'simulation.py')
-2. Esegui:
+## Quick use
+1. Go to the root of the repository (where 'simulation.py' is)
+2. Run:
 
     ```markdown
         python3 simulation.py input.txt
     ```
-    Dove 'input.txt' è il file con le istruzioni in formato binario.
+Where 'input.txt' is the file with instructions in binary format.
 
-## Formato del file di input
-- Ogni riga contiene una istruzione in codice binario (stringa in 32 bit) secondo un formato MIPS32:
+## Input file format
+-Each line contains an instruction in binary code (32-bit string) according to a MIPS32 format:
 
-    - type R op 00000 rs 00000 rt 00000 rd 00000 shamt 00000 FUNC 000000
-    - type I op 000000 rs 00000 rt 00000 imd 0000000000000000     rt destination
-    - type J op 000000 rs 00000 rt 00000 offset 0000000000000000  rt destination( o source in SW)
+    -type R op 00000 rs 00000 rt 00000 rd 00000 shamt 00000 FUNC 000000
 
-    - Il file input mostra un esempio di formato di test.vuole simulare un eventuale file in formato assembly che ipoteticamente fosse trasformato in binario riga per riga e che per il momento viene direttamente eseguito istruzione per istruzione.(si implementerà la possibilità di caricarlo in ram da cui poi avverebbe la lettura similmente alla realtà).
+    -type I op 000000 rs 00000 rt 00000 imd 0000000000000000 rt destination
+    
+    -type J op 000000 rs 00000 rt 00000 offset 0000000000000000 rt destination (or source in SW)
 
-## Output
-- Il programma stampa in console i log delle operazioni che sta compiendo sulle memorie, i registri, le fasi in cache e accesso alla lau. (tutti i dati sono in formato intero per essere un pò più leggibili)
+    -The input file shows an example of a test format. It wants to simulate a possible file in assembly format which was hypothetically transformed into binary line by line and which for the moment is directly executed instruction by instruction. (the possibility of loading it into RAM from which it would then be read similarly to reality will be implemented).
 
-    Esempio output:
+## Outputs
+-The program prints in the console the logs of the operations it is carrying out on the memories, registers, cache phases and access to the lau. (all data is in full format to be a little more readable)
+
+    Example output:
     ```
-    Decoding the instruction 00010000000000010000000000001010 : 
+    Decoding the instruction 00010000000000010000000000001010: 
     Opcode: 000100, soure_one: 00000, source_two: 0000000000001010, destination: 00001
 
     Access to Registers: get value 0 from register at address 0
@@ -44,23 +46,24 @@ Il progetto volutamente semplificato serve a mostrare il ciclo di istruzione del
     Access to Registers: store value 25 in register at address 1
     ```
 
+## Implementation choices
+-It was chosen to try to get a little closer to the reality of using the string type to represent data in binary format ('0b00' or '00').
 
-## Scelte di implementazione
-- È stato scelto per provare ad avvicinarsi un pochino alla relatà di utilizzare il tipo stringa per la rappresentazione dei dati in formato binario ('0b00' oppure '00').
+-The manipulation in the operations occurs with the transformation into integers to indicate the numerical values ​​and therefore the memory indices in the data structures.
 
-- La manipolazione nelle operazioni avviene con la trasformazione in interi per indicare i valori numerici e quindi gli indici di memoria nelle strutture dati.
+-For load and store operations the data must always be represented as binary in the form of strings.
+-The data structure used for memories is the list while for the cache it is a list of dictionaries ([{'Tag': , 'Data': , 'Dirty_Bit'}])
 
-- Per le operazioni di load e store i dati devono sempre essere rappresentati come binari in forma di tstringhe.
 
-- La struttura dati usata per le memorie è la lista mentre per la cache è una lista di dizionari ([{'Tag': , 'Data': , 'Dirty_Bit'}])
+## Future implementation attempts
+-Add new instructions.
+-Implement instruction file loading into main memory. (closer to reality).
 
-## TEntativi di implementazioni futuri
-- Aggiungere  nuove istruzioni.
-- Implementare il caricamento del file di istruzioni in memoria principale. (più vicino alla realtà).
 
-## Come contribuire
-- Sarei contento che ci fossero correzioni e miglioramenti da parte di chi è più esperto anche proponendo uno stravolgimento della logica generale se (come è presumibile) si riscontra che la mia logica è troppo grezza e poco funzionale.
-- Grazie per il vostro aiuto e volonta di educarmi a fare meglio.
+## How to contribute
+-I would be happy if there were corrections and improvements by those who are more expert even proposing a distortion of the general logic if (as is presumable) it is found that my logic is too crude and not very functional.
+-Thank you for your help and willingness to educate me to do better.
 
-## Licenza
-- Progetto di studio e di apprendimento
+
+## License
+-Study and learning project
