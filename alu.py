@@ -20,7 +20,7 @@ class ALU:
         self.opcode = ''
         self.source_value_one = ''
         self.source_value_two = ''
-        self.status = "Activation ALU for operation: "
+        self.status = "Activation ALU: "
 
 
     def get_opcode_and_values_from_cu(self, opcode, source_value_one, source_value_two):
@@ -69,7 +69,7 @@ class ALU:
         action = f'add value {int(self.source_two, 2)} with value {int(self.source_one, 2)}. Result is the memory address {int(memory_address, 2)}'
         print(self.status + action)
         return memory_address
-
+    
 
     def execute_op(self):
         result = ''
