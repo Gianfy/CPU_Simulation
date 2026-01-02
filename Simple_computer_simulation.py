@@ -1,8 +1,8 @@
-# Questa rappresenta una semplicissima simulazione di un computer per motivi di studio.
-# Per il momento le componenti si mantengono nella semplicità di operazioni come somma, sottrazione e moltiplicazione.
-# Saraà necessario inserire l'operazione di Salto per poter testare anche l'uso del PC(program counter).
-# Questa classe rappresenta il Computer nella sua totalità, i componenti sono in classi separate e sono:
-# CPU, CU, Memorie(registri, cache e ram), ALU.
+#This represents a very simple simulation of a computer for study purposes.
+# For the moment the components maintain the simplicity of operations such as addition, subtraction and multiplication.
+# It will be necessary to insert the Jump operation in order to also test the use of the PC (program counter).
+# This class represents the Computer as a whole, the components are in separate classes and are:
+# CPU, CU, Memories (registers, cache and ram), ALU.
 from cpu import CPU
 
 
